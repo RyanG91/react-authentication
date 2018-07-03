@@ -31,9 +31,9 @@ router.post('/register', register, signJwtForUser)
 
 router.post('/login', login, signJwtForUser)
 
-// router.get('/logout', (req, res) => {
-//   req.logout();
-//   res.redirect('/');
-// });
-//
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.sendStatus(200);
+});
+
 module.exports = router;

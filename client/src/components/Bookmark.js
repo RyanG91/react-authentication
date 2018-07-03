@@ -1,4 +1,6 @@
 import React from 'react'
+import { api, setJwt } from '../api/init'
+
 
 function Bookmark (props) {
   const { _id, title, url, remove } = props

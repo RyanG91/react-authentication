@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors')
 
-const { initializePassport } = require('./middleware/auth')
+const { initializePassport, requireJwt } = require('./middleware/auth')
 
 const app = express();
 
@@ -24,6 +24,6 @@ mongoose.connect('mongodb://localhost/express-mongo-passport', (err) => {
 });
 
 app.use('/auth', require('./routes/auth'))
-app.use('/bookmarks', require('./routes/bookmarks'))
+app.use('/bookmarks', requireJwt, require('./routes/bookmarks'))
 
 app.listen(3000, () => console.log('Listening on http://localhost:3000'));
